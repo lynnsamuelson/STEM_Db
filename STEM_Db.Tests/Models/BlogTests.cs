@@ -33,6 +33,18 @@ namespace STEM_Db.Tests.Models
             Assert.AreEqual(publish, blog.DatePublished);
         }
 
+        [TestMethod]
+        public void BlogEnsureICanCreateObjectWithInializerSyntax()
+        {
+            DateTime publish = DateTime.Now;
+            Blog blog = new Blog { BlogId = 33, BlogTitle = "Why Kids Should learn Science", BlogContent = "There are many reasons kids should learn science", BlogSummary = "It is important we teach are kids science.", DatePublished = publish };
+            Assert.AreEqual(33, blog.BlogId);
+            Assert.AreEqual("Why Kids Should learn Science", blog.BlogTitle);
+            Assert.AreEqual("There are many reasons kids should learn science", blog.BlogContent);
+            Assert.AreEqual("It is important we teach are kids science.", blog.BlogSummary);
+            Assert.AreEqual(publish, blog.DatePublished);
+        }
+
     }
 }
 

@@ -7,6 +7,7 @@ namespace STEM_Db.Models
 {
     public class Fact
     {
+        [key]
         public int FactId { get; set; }
         public string FactText { get; set; }
         public bool IsQuote { get; set; }

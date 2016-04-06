@@ -8,6 +8,7 @@ namespace STEM_Db.Models
 {
     public class Experiment
     {
+        [key]
         public int ExperimentId { get; set; }
         public string ExperimentTitle { get; set; }
         public string ExperimentCatagory { get; set; }

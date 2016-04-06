@@ -32,5 +32,17 @@ namespace STEM_Db.Tests.Models
             Assert.AreEqual("First take 5mL of water", experiment.ExperimentProcedure);
             Assert.AreEqual("This expermiment gives an understanding of the worlds buliding blocks, molecules", experiment.ExperimentSummary);
         }
+
+        [TestMethod]
+        public void ExperimentEnsureICanCreateObjectWithInitializerSyntax()
+        {
+            Experiment experiment = new Experiment { ExperimentId = 224, ExperimentTitle = "Test Science", ExperimentCatagory = "chemistry", ExperimentBackground = "Chemistry is the study of atoms and molecules", ExperimentProcedure = "First take 5mL of water", ExperimentSummary = "This expermiment gives an understanding of the worlds buliding blocks, molecules" };
+            Assert.AreEqual(224, experiment.ExperimentId);
+            Assert.AreEqual("Test Science", experiment.ExperimentTitle);
+            Assert.AreEqual("chemistry", experiment.ExperimentCatagory);
+            Assert.AreEqual("Chemistry is the study of atoms and molecules", experiment.ExperimentBackground);
+            Assert.AreEqual("First take 5mL of water", experiment.ExperimentProcedure);
+            Assert.AreEqual("This expermiment gives an understanding of the worlds buliding blocks, molecules", experiment.ExperimentSummary);
+        }
     }
 }

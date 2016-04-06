@@ -8,6 +8,7 @@ namespace STEM_Db.Models
 {
     public class Blog
     {
+        [key]
         public int BlogId { get; set; }
         public string BlogTitle { get; set; }
         public Image BlogPicture { get; set; }

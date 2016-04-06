@@ -27,6 +27,16 @@ namespace STEM_Db.Tests.Models
             Assert.AreEqual(false, fact.IsQuote);
            
         }
+
+        [TestMethod]
+        public void FactEnsureICanCreateObjectWithInitializerSyntax()
+        {
+            Fact fact = new Fact { FactId = 1, FactText = "The world is round", IsQuote = false };
+
+            Assert.AreEqual(1, fact.FactId);
+            Assert.AreEqual("The world is round", fact.FactText);
+            Assert.AreEqual(false, fact.IsQuote);
+        }
     }
 }
 
