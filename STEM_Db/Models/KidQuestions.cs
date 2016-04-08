@@ -7,8 +7,9 @@ namespace STEM_Db.Models
 {
     public class KidQuestions
     {
+
         [key]
-        public int QuestionId { get; set; }
+        public int KidQuestionsId { get; set; }
         public string Question { get; set; }
         public string Answer {get; set;}
         public DateTime QuestionDate { get; set; }

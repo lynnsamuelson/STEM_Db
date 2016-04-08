@@ -285,10 +285,10 @@ namespace STEM_Db.Tests.Models
         DateTime date = DateTime.Now;
         var questions = new List<KidQuestions>
         {
-            new KidQuestions {QuestionId = 1, Question = "Why are there stars?", KidAge = 3, Answer = "because there are other suns.", Catagory = "astronomy", QuestionDate = date },
-            new KidQuestions {QuestionId = 2, Question = "What is a color?", KidAge = 3, Answer = "Light absorbing and reflecting", Catagory = "chemistry", QuestionDate = date },
-            new KidQuestions {QuestionId = 3, Question = "Why?", KidAge = 3, Answer = "because", Catagory = "general", QuestionDate = date },
-            new KidQuestions {QuestionId = 4, Question = "How?", KidAge = 3, Answer = "by solving problems", Catagory = "engineering", QuestionDate = date }
+            new KidQuestions {KidQuestionsId = 1, Question = "Why are there stars?", KidAge = 3, Answer = "because there are other suns.", Catagory = "astronomy", QuestionDate = date },
+            new KidQuestions {KidQuestionsId = 2, Question = "What is a color?", KidAge = 3, Answer = "Light absorbing and reflecting", Catagory = "chemistry", QuestionDate = date },
+            new KidQuestions {KidQuestionsId = 3, Question = "Why?", KidAge = 3, Answer = "because", Catagory = "general", QuestionDate = date },
+            new KidQuestions {KidQuestionsId = 4, Question = "How?", KidAge = 3, Answer = "by solving problems", Catagory = "engineering", QuestionDate = date }
         };
         mock_kidQuestion_set.Object.AddRange(questions);
         ConnectMocksToDataStore(questions);
@@ -303,19 +303,19 @@ namespace STEM_Db.Tests.Models
             DateTime date = DateTime.Now;
             var questions = new List<KidQuestions>
         {
-            new KidQuestions {QuestionId = 1, Question = "Why are there stars?", KidAge = 3, Answer = "because there are other suns.", Catagory = "astronomy", QuestionDate = date },
-            new KidQuestions {QuestionId = 2, Question = "What is a color?", KidAge = 3, Answer = "Light absorbing and reflecting", Catagory = "chemistry", QuestionDate = date },
-            new KidQuestions {QuestionId = 3, Question = "Why?", KidAge = 3, Answer = "because", Catagory = "general", QuestionDate = date },
-            new KidQuestions {QuestionId = 4, Question = "How?", KidAge = 3, Answer = "by solving problems", Catagory = "engineering", QuestionDate = date }
+            new KidQuestions {KidQuestionsId = 1, Question = "Why are there stars?", KidAge = 3, Answer = "because there are other suns.", Catagory = "astronomy", QuestionDate = date },
+            new KidQuestions { KidQuestionsId = 2, Question = "What is a color?", KidAge = 3, Answer = "Light absorbing and reflecting", Catagory = "chemistry", QuestionDate = date },
+            new KidQuestions { KidQuestionsId = 3, Question = "Why?", KidAge = 3, Answer = "because", Catagory = "general", QuestionDate = date },
+            new KidQuestions { KidQuestionsId = 4, Question = "How?", KidAge = 3, Answer = "by solving problems", Catagory = "engineering", QuestionDate = date }
         };
             mock_kidQuestion_set.Object.AddRange(questions);
             ConnectMocksToDataStore(questions);
 
-            var expected = new KidQuestions { QuestionId = 2, Question = "What is a color?", KidAge = 3, Answer = "Light absorbing and reflecting", Catagory = "chemistry", QuestionDate = date };
+            var expected = new KidQuestions { KidQuestionsId = 2, Question = "What is a color?", KidAge = 3, Answer = "Light absorbing and reflecting", Catagory = "chemistry", QuestionDate = date };
 
             var actual = repository.GetQuestion(2);
 
-            Assert.AreEqual(expected.QuestionId, actual.QuestionId);
+            Assert.AreEqual(expected.KidQuestionsId, actual.KidQuestionsId);
         }
 
    }

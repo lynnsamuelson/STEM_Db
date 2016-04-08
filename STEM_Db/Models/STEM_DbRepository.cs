@@ -79,7 +79,7 @@ namespace STEM_Db.Models
 
         public KidQuestions GetQuestion(int Id)
         {
-            var query = from question in _context.KidQuestions where question.QuestionId == Id select question;
+            var query = from question in _context.KidQuestions where question.KidQuestionsId == Id select question;
             return query.SingleOrDefault();
         }
     }

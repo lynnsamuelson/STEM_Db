@@ -18,13 +18,13 @@ namespace STEM_Db.Tests.Models
         {
             KidQuestions question = new KidQuestions();
             DateTime date = DateTime.Now;
-            question.QuestionId = 59;
+            question.KidQuestionsId = 59;
             question.Question = "Why are the sun and moon out at the same time?";
             question.Answer = "Because the way the earth rotates around the sun and the moon around the earth this happens";
             question.QuestionDate = date;
             question.KidAge = 3;
             question.Catagory = "Astronomy";
-            Assert.AreEqual(59, question.QuestionId);
+            Assert.AreEqual(59, question.KidQuestionsId);
             Assert.AreEqual("Why are the sun and moon out at the same time?", question.Question);
             Assert.AreEqual("Because the way the earth rotates around the sun and the moon around the earth this happens", question.Answer);
             Assert.AreEqual(date, question.QuestionDate);
@@ -35,8 +35,8 @@ namespace STEM_Db.Tests.Models
         public void KidQuestionsEnsureICanCreateObjectWithInitializerSyntax()
         {
             DateTime date = DateTime.Now;
-            KidQuestions question = new KidQuestions { QuestionId = 59, Question = "Why are the sun and moon out at the same time?", Answer = "Because the way the earth rotates around the sun and the moon around the earth this happens", QuestionDate = date, KidAge = 3, Catagory = "Astronomy" };
-            Assert.AreEqual(59, question.QuestionId);
+            KidQuestions question = new KidQuestions { KidQuestionsId = 59, Question = "Why are the sun and moon out at the same time?", Answer = "Because the way the earth rotates around the sun and the moon around the earth this happens", QuestionDate = date, KidAge = 3, Catagory = "Astronomy" };
+            Assert.AreEqual(59, question.KidQuestionsId);
             Assert.AreEqual("Why are the sun and moon out at the same time?", question.Question);
             Assert.AreEqual("Because the way the earth rotates around the sun and the moon around the earth this happens", question.Answer);
             Assert.AreEqual(date, question.QuestionDate);

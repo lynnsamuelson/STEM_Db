@@ -12,7 +12,7 @@ namespace STEM_Db.Models
         public int ExperimentId { get; set; }
         public string ExperimentTitle { get; set; }
         public string ExperimentCatagory { get; set; }
-        public Image Experimentpicture { get; set; }
+        //public Image Experimentpicture { get; set; }
         public string ExperimentBackground { get; set; }
         public string ExperimentProcedure { get; set; }
         public string ExperimentSummary { get; set; }
