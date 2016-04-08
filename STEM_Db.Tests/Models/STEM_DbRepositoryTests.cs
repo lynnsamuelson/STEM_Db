@@ -115,10 +115,8 @@ namespace STEM_Db.Tests.Models
 
 
 
-
-
         [TestMethod]
-        public void STEM_DbRespositoryEnsureICanGetAllBlogs()
+        public void STEM_DbRepositoryEnsureICanGetAllBlogs()
         {
             var expected = new List<Blog>
             {
@@ -133,5 +131,196 @@ namespace STEM_Db.Tests.Models
             Assert.AreEqual("Test Title 1", actual.First().BlogTitle);
             CollectionAssert.AreEqual(expected, actual);
         }
+
+        [TestMethod]
+        public void STEM_DbRepositroyEnsureICanGetBlogById()
+        {
+            var blogList = new List<Blog>
+            {
+                new Blog {BlogTitle = "Test Title 1", BlogId = 1 },
+                new Blog {BlogTitle = "Test Title 2", BlogId =2}
+            };
+            mock_blog_set.Object.AddRange(blogList);
+            ConnectMocksToDataStore(blogList);
+
+            Blog expected = new Blog { BlogTitle = "Test Title 1", BlogId = 1 };
+
+            Blog actual = repository.GetBlog(1);
+            Assert.AreEqual("Test Title 1", actual.BlogTitle);
+            Assert.AreEqual(1, actual.BlogId);
+
+        }
+
+
+        [TestMethod]
+        public void STEM_DbEnsureICanGetAllExperiments()
+        {
+            var experiments = new List<Experiment>
+            {
+                new Experiment {ExperimentId = 1, ExperimentBackground = "Science is cool", ExperimentCatagory = "Chemistry", ExperimentTitle = "Cool Things with Chemistry" },
+                new Experiment {ExperimentId = 2, ExperimentBackground = "Chemistry is cool", ExperimentCatagory = "Chemistry", ExperimentTitle = " More Cool Things with Chemistry" },
+                new Experiment {ExperimentId = 3, ExperimentBackground = "Biology is cool", ExperimentCatagory = "Bilogy", ExperimentTitle = "Cool Things with Biology" },
+                new Experiment {ExperimentId = 4, ExperimentBackground = "Physics is cool", ExperimentCatagory = "Pyysics", ExperimentTitle = "Cool Things with Physics" }
+            };
+            mock_experiment_set.Object.AddRange(experiments);
+            ConnectMocksToDataStore(experiments);
+
+           var expected = new List<Experiment>
+            {
+                new Experiment {ExperimentId = 1, ExperimentBackground = "Science is cool", ExperimentCatagory = "Chemistry", ExperimentTitle = "Cool Things with Chemistry" },
+                new Experiment {ExperimentId = 2, ExperimentBackground = "Chemistry is cool", ExperimentCatagory = "Chemistry", ExperimentTitle = " More Cool Things with Chemistry" },
+                new Experiment {ExperimentId = 3, ExperimentBackground = "Biology is cool", ExperimentCatagory = "Bilogy", ExperimentTitle = "Cool Things with Biology" },
+                new Experiment {ExperimentId = 4, ExperimentBackground = "Physics is cool", ExperimentCatagory = "Pyysics", ExperimentTitle = "Cool Things with Physics" }
+            };
+
+            var actual = repository.GetAllExperiments();
+
+            Assert.AreEqual(actual[0].ExperimentId, expected[0].ExperimentId);
+        }
+
+        [TestMethod]
+        public void ExperimantEnsureICanGetExperimentById()
+
+
+
+        {
+            var experiments = new List<Experiment>
+            {
+                new Experiment {ExperimentId = 1, ExperimentBackground = "Science is cool", ExperimentCatagory = "Chemistry", ExperimentTitle = "Cool Things with Chemistry" },
+                new Experiment {ExperimentId = 2, ExperimentBackground = "Chemistry is cool", ExperimentCatagory = "Chemistry", ExperimentTitle = " More Cool Things with Chemistry" },
+                new Experiment {ExperimentId = 3, ExperimentBackground = "Biology is cool", ExperimentCatagory = "Bilogy", ExperimentTitle = "Cool Things with Biology" },
+                new Experiment {ExperimentId = 4, ExperimentBackground = "Physics is cool", ExperimentCatagory = "Pyysics", ExperimentTitle = "Cool Things with Physics" }
+            };
+            mock_experiment_set.Object.AddRange(experiments);
+            ConnectMocksToDataStore(experiments);
+
+            var expected = new Experiment { ExperimentId = 3, ExperimentBackground = "Biology is cool", ExperimentCatagory = "Bilogy", ExperimentTitle = "Cool Things with Biology" };
+       
+            var actual = repository.GetExperimentById(3);
+
+            Assert.AreEqual(experiments[2].ExperimentTitle, actual.ExperimentTitle);
+            //CollectionAssert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void ExperimentEnsureICanGetExperimentsInACatagory()
+        {
+            var experiments = new List<Experiment>
+            {
+                new Experiment {ExperimentId = 1, ExperimentBackground = "Science is cool", ExperimentCatagory = "Chemistry", ExperimentTitle = "Cool Things with Chemistry" },
+                new Experiment {ExperimentId = 2, ExperimentBackground = "Chemistry is cool", ExperimentCatagory = "Chemistry", ExperimentTitle = " More Cool Things with Chemistry" },
+                new Experiment {ExperimentId = 3, ExperimentBackground = "Biology is cool", ExperimentCatagory = "Bilogy", ExperimentTitle = "Cool Things with Biology" },
+                new Experiment {ExperimentId = 4, ExperimentBackground = "Physics is cool", ExperimentCatagory = "Pyysics", ExperimentTitle = "Cool Things with Physics" }
+            };
+            mock_experiment_set.Object.AddRange(experiments);
+            ConnectMocksToDataStore(experiments);
+
+            var expected = new List<Experiment>
+            {
+                new Experiment {ExperimentId = 1, ExperimentBackground = "Science is cool", ExperimentCatagory = "Chemistry", ExperimentTitle = "Cool Things with Chemistry" },
+                new Experiment {ExperimentId = 2, ExperimentBackground = "Chemistry is cool", ExperimentCatagory = "Chemistry", ExperimentTitle = " More Cool Things with Chemistry" },
+            };
+
+            var actual = repository.GetExperimentByCatagory("Chemistry");
+
+            Assert.AreEqual("Chemistry is cool", actual[1].ExperimentBackground);
+            //CollectionAssert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void FactGetAllFacts()
+        {
+            var facts = new List<Fact>
+            {
+                new Fact {FactId = 1, FactText = "this is 1", IsQuote = false },
+                new Fact {FactId = 2, FactText = "this is 2", IsQuote = true },
+                new Fact {FactId = 3, FactText = "this is 3", IsQuote = false }
+            };
+            mock_fact_set.Object.AddRange(facts);
+            ConnectMocksToDataStore(facts);
+
+            var actual = repository.GetAllFacts();
+
+            Assert.AreEqual(1, actual[0].FactId);
+            Assert.AreEqual("this is 3", actual[2].FactText);
+        }
+
+        [TestMethod]
+        public void FactGetFactByid()
+        {
+            var facts = new List<Fact>
+            {
+                new Fact {FactId = 1, FactText = "this is 1", IsQuote = false },
+                new Fact {FactId = 2, FactText = "this is 2", IsQuote = true },
+                new Fact {FactId = 3, FactText = "this is 3", IsQuote = false }
+            };
+            mock_fact_set.Object.AddRange(facts);
+            ConnectMocksToDataStore(facts);
+
+            var actual = repository.GetFact(facts[1].FactId);
+
+            Assert.AreEqual("this is 2", actual.FactText);
+        }
+
+        [TestMethod]
+        public void FactGetFactsThatAreQuotes()
+        {
+            var facts = new List<Fact>
+            {
+                new Fact {FactId = 1, FactText = "this is 1", IsQuote = false },
+                new Fact {FactId = 2, FactText = "this is 2", IsQuote = true },
+                new Fact {FactId = 3, FactText = "this is 3", IsQuote = false }
+            };
+            mock_fact_set.Object.AddRange(facts);
+            ConnectMocksToDataStore(facts);
+
+            var actual = repository.GetQuotes();
+
+            Assert.AreEqual("this is 2", actual[0].FactText);
+        }
+
+    [TestMethod]
+    public void KidQuestionsEnsureICanGetAllQuestions()
+    {
+        DateTime date = DateTime.Now;
+        var questions = new List<KidQuestions>
+        {
+            new KidQuestions {QuestionId = 1, Question = "Why are there stars?", KidAge = 3, Answer = "because there are other suns.", Catagory = "astronomy", QuestionDate = date },
+            new KidQuestions {QuestionId = 2, Question = "What is a color?", KidAge = 3, Answer = "Light absorbing and reflecting", Catagory = "chemistry", QuestionDate = date },
+            new KidQuestions {QuestionId = 3, Question = "Why?", KidAge = 3, Answer = "because", Catagory = "general", QuestionDate = date },
+            new KidQuestions {QuestionId = 4, Question = "How?", KidAge = 3, Answer = "by solving problems", Catagory = "engineering", QuestionDate = date }
+        };
+        mock_kidQuestion_set.Object.AddRange(questions);
+        ConnectMocksToDataStore(questions);
+        var actual = repository.GetQuestions();
+
+            CollectionAssert.AreEqual(questions, actual);
     }
+
+        [TestMethod]
+        public void KidQuestionsEnSureICanGetQuestionById()
+        {
+            DateTime date = DateTime.Now;
+            var questions = new List<KidQuestions>
+        {
+            new KidQuestions {QuestionId = 1, Question = "Why are there stars?", KidAge = 3, Answer = "because there are other suns.", Catagory = "astronomy", QuestionDate = date },
+            new KidQuestions {QuestionId = 2, Question = "What is a color?", KidAge = 3, Answer = "Light absorbing and reflecting", Catagory = "chemistry", QuestionDate = date },
+            new KidQuestions {QuestionId = 3, Question = "Why?", KidAge = 3, Answer = "because", Catagory = "general", QuestionDate = date },
+            new KidQuestions {QuestionId = 4, Question = "How?", KidAge = 3, Answer = "by solving problems", Catagory = "engineering", QuestionDate = date }
+        };
+            mock_kidQuestion_set.Object.AddRange(questions);
+            ConnectMocksToDataStore(questions);
+
+            var expected = new KidQuestions { QuestionId = 2, Question = "What is a color?", KidAge = 3, Answer = "Light absorbing and reflecting", Catagory = "chemistry", QuestionDate = date };
+
+            var actual = repository.GetQuestion(2);
+
+            Assert.AreEqual(expected.QuestionId, actual.QuestionId);
+        }
+
+   }
+  
+
+
 }
+
