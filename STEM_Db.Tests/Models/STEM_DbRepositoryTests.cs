@@ -318,7 +318,26 @@ namespace STEM_Db.Tests.Models
             Assert.AreEqual(expected.KidQuestionsId, actual.KidQuestionsId);
         }
 
-   }
+        [TestMethod]
+        public void STEM_DbEnsureICanCreaeABlog()
+        {
+            // Arrange
+            DateTime base_time = DateTime.Now;
+            List<Blog> expected_blog = new List<Blog>(); // This is our database
+            ConnectMocksToDataStore(expected_blog);
+            string BlogTitle = "The database test";
+            string BlogContent = "It is importanat to teach our kids STEM because the long-term results affect more than just science skills";
+            string BlogSummary = "This is a test blog summary";
+            mock_blog_set.Setup(j => j.Add(It.IsAny<Blog>())).Callback((Blog s) => expected_blog.Add(s));
+            // Act
+            bool successful = repository.CreateBlog(BlogTitle, BlogContent, BlogSummary);
+
+            // Assert
+            Assert.AreEqual(1, repository.GetAllBlogs().Count);
+
+        }
+
+    }
   
 
 

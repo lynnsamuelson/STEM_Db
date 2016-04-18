@@ -23,6 +23,17 @@ namespace STEM_Db
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+
+            bundles.Add(new ScriptBundle("~/Content/myjavascript").Include(
+                      "~/Content/custom.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/angular").Include(
+                        "~/Scripts/angular.js",
+                        "~/Scripts/angular-aria.js",
+                        "~/App/app.js"
+
+                        ));
+            
         }
     }
 }

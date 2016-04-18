@@ -1,6 +1,20 @@
 ﻿@{
-    Layout = null;
+    Layout = "~/views/shared/_layout.cshtml";
 }
+
+
+  @*<div ng-controller="Controller">
+    <div>
+        <p>{{test}}</p>
+        <h1>Add Blog</h1>
+        <div id="addBlog">
+            <input ng-model="blogTitle" placeholder="Blog Title" />
+            <button ng-click="createBlog()">Save Blog</button>
+        </div>
+    </div>
+  </div>*@
+
+
 
 <!DOCTYPE html>
 
@@ -12,6 +26,20 @@
 <body>
     <div>
         <h1>Add Blog</h1>
+        <div ng-controller="Controller">
+            <p>{{test}}</p>
+            <button ng-click="testing()">test</button>
+            <div id="addBlog">
+                <h1>Add Blog</h1>
+                <input ng-model="blogTitle" placeholder="Blog Title" />
+                <button ng-click="createBlog()">Create Blog</button>
+            </div>
+        </div>
+        
     </div>
+   
+        
 </body>
 </html>
+
+

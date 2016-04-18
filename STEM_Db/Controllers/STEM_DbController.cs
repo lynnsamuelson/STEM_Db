@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Mvc;
 
 namespace STEM_Db.Controllers
 {
@@ -20,6 +21,18 @@ namespace STEM_Db.Controllers
         {
             Repo = _repo;
         }
+
+        public ActionResult Blog()
+        {
+            
+            return View();
+        }
+
+        private ActionResult View()
+        {
+            throw new NotImplementedException();
+        }
+
         // GET: api/STEM_Db
         public IEnumerable<string> Get()
         {

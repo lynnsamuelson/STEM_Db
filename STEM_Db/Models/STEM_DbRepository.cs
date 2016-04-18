@@ -82,5 +82,21 @@ namespace STEM_Db.Models
             var query = from question in _context.KidQuestions where question.KidQuestionsId == Id select question;
             return query.SingleOrDefault();
         }
+
+        public bool CreateBlog(string blogTitle, string blogContent, string blogSummary)
+        {
+            Blog a_blog = new Blog { BlogTitle = blogTitle, BlogSummary = blogSummary, BlogContent = blogContent, DatePublished = DateTime.Now };
+            bool is_added = true;
+            try
+            {
+                Blog added_blog = _context.Blogs.Add(a_blog);
+                _context.SaveChanges();
+            }
+            catch (Exception)
+            {
+                is_added = false;
+            }
+            return is_added;
+        }
     }
 }
